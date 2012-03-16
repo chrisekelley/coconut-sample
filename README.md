@@ -146,8 +146,7 @@ It's a pain to run 'couchapp push' everytime you make a change. Mike wrote a lit
     gem install watchr
     
 How to deploy to an Android app?
-___________
-
+---------------------------------
 
 Setting up the [Emulator](http://developer.android.com/guide/developing/devices/emulator.html): 
 
@@ -179,7 +178,7 @@ couchAppInstanceUrl=coconut-sample/_design/coconut/index.html
 Deploy.
 
 Anything else?
-______________
+----------------
 
 Look at index.html - many of the coconut-related .js files have been minimised and consolidated into app/coconut_formy.js. 
     
