@@ -158,10 +158,30 @@ Clone [Android-Coconut-TouchDB](https://github.com/vetula/Android-Coconut-TouchD
 Push the new project to the emulator:
 couchapp push tou
 
+Pushing to the emulator is very slow. Using couchapp -v or watching logcat can help. You also may be able to push to a device instead of the emulator.
+
 Once it is on the emulator you can download the SQLlite db to the app:
 
 cd source/Android-Coconut-TouchDB/assets
-adb pull /data/data/org.rti.rcd.ict.touchdb.testapp    
+adb pull /data/data/org.rti.rcd.ict.touchdb.testapp/files
+cd files
+
+Zip coconut-sample.touchdb to create coconut-sample.touchdb.zip
+Zip coconut-sample.touchdb to create coconut-sample.touchdb.zip
+
+Move these new zips to files and remove the old zips.
+
+In Android-Coconut-TouchDB, edit res/raw/coconut.properties and change coconut-sample to the name of your couchapp:
+
+app_db=coconut-sample
+couchAppInstanceUrl=coconut-sample/_design/coconut/index.html
+
+Deploy.
+
+Anything else?
+______________
+
+Look at index.html - many of the coconut-related .js files have been minimised and consolidated into app/coconut_formy.js. 
     
 Examples
 --------

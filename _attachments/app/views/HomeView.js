@@ -23,7 +23,6 @@ var HomeView = Backbone.View.extend({
 	events: {
 		"click #form-search " : "search",
 		"click #form-client " : "incidentLink",
-		"click #form-parto " : "partoLink",
 		"click #form-config " : "configLink",
 		"click #form-design " : "designLink",
 		"click #nextLink"	  : "nextLink",
@@ -49,9 +48,6 @@ var HomeView = Backbone.View.extend({
 	},
 	incidentLink: function() {
 		FORMY.router.navigate('incident', true);
-	},
-	partoLink: function() {
-		FORMY.router.navigate('parto', true);
 	},
 	configLink: function() {
 		//window.location.href = '/mobilefuton/_design/mobilefuton/index.html';
