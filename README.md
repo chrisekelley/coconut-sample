@@ -1,5 +1,8 @@
+Coconut-sample
+==============
+
+This is a sample Couchapp that demonstrates the features of [Coconut](http://ictedge.org/coconut).
 Coconut renders json defined forms in a browser and then saves the results to couchdb (and now with TouchDB!).
-=========================================================================================
 
 Instructions
 ------------
