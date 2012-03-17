@@ -4,13 +4,26 @@ Coconut renders json defined forms in a browser and then saves the results to co
 Instructions
 ------------
 
+Coconut-sample is a [Couchapp](http://couchapp.org/page/index) that will run in CouchDB and [TouchDB-Android](https://github.com/couchbaselabs/TouchDB-Android). 
+
+[Android-Coconut-TouchDB](https://github.com/vetula/Android-Coconut-TouchDB) is an Android application that hosts a TouchDB instance that comes with Coconut-sample. 
+
+An Android [APK](https://github.com/vetula/Android-Coconut-TouchDB/raw/master/Android-Coconut-TouchDB.apk) is available if you don't wish to build and deploy the Android-Coconut-TouchDB project.
+
+Getting Started
+---------------
+
 It is helpful to have [couchdb](http://couchdb.apache.org/) for development:
 
     apt-get install couchdb
 
-The first time you push the couch, the coconut db will be created for you. You can also create a new database using futon, the handy couchdb GUI by clicking here: [futon on localhost](http://localhost:5984/_utils), or by running this curl command:
+The first time you push the couch, the coconut db will be created for you. 
+You can also create a new database using futon, the handy couchdb GUI by clicking here: 
+[futon on localhost](http://localhost:5984/_utils), or by running this curl command:
 
     curl -X PUT http://localhost:5984/coconut
+
+Please note that futon is not yet available for TouchDB.
 
 To get Coconut working you need to put the files in this directory into a couchdb database. You can accomplish this by using the
 [couchapp tool](http://couchapp.org/page/couchapp-python).
@@ -25,14 +38,15 @@ Now you can point your browser at the [Coconut](http://localhost:5984/coconut/_d
 
 You may wish to customise the .couchapprc file to point to different targets.
 
-{ "env":
-  { "dev"    : {"db": "http://admin:luvcouch@localhost:5984/coconut-sample"}
-  , "mob": {"db": "http://192.168.0.102:8888/coconut-sample"}
-  , "tou": {"db": "http://127.0.0.1:8880/coconut-sample"}
-  }
-}
+	{ "env":
+	  { "dev"    : {"db": "http://admin:luvcouch@localhost:5984/coconut-sample"}
+	  , "mob": {"db": "http://192.168.0.102:8888/coconut-sample"}
+	  , "tou": {"db": "http://127.0.0.1:8880/coconut-sample"}
+	  }
+	}
 
-The "tou" target is the TouchDB app on the emulator. The "mob" target is the TouchDB app on your mobile device. See the section on deploy lower on how to setup the emulator.
+The "tou" target is the TouchDB app on the emulator. The "mob" target is the TouchDB app on your mobile device. 
+See the section on deploy lower on how to setup the emulator.
 
 How does this work?
 -------------------
@@ -137,10 +151,12 @@ Also considered getting a substring of the sequential uuid - truncate the first 
 
 https://issues.apache.org/jira/browse/COUCHDB-465?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel
            
-Other useful info
+Couchapp Tools
 -----------------
 
-It's a pain to run 'couchapp push' everytime you make a change. Mike wrote a little [watchr](http://rubygems.org/gems/watchr) script that watches for changes to any relevant files and then automatically pushes them into your couch. To get it you need to install rubygems and watchr:
+It's a pain to run 'couchapp push' everytime you make a change. 
+Mike wrote a little [watchr](http://rubygems.org/gems/watchr) script that watches for changes to any relevant files and then automatically pushes them into your couch. 
+To get it you need to install rubygems and watchr:
 
     apt-get install rubygems
     gem install watchr
@@ -148,14 +164,18 @@ It's a pain to run 'couchapp push' everytime you make a change. Mike wrote a lit
 How to deploy to an Android app?
 ---------------------------------
 
-Setting up the [Emulator](http://developer.android.com/guide/developing/devices/emulator.html): 
+You can copy the database by deploying the sample app to the 
+[Android Emulator](http://developer.android.com/guide/developing/devices/emulator.html) and then pushing your new Couchapp
+to it. 
 
-telnet localhost 5554 
-redir add tcp:8880:8888
+First redirect the emulator to a local port. In this example, TouchDB, whic runs on port 8888, is redirected to port 8880:
+
+    telnet localhost 5554 
+    redir add tcp:8880:8888
 
 Clone [Android-Coconut-TouchDB](https://github.com/vetula/Android-Coconut-TouchDB) and deploy it to your Android device or emulator.
 Push the new project to the emulator:
-couchapp push tou
+    couchapp push tou
 
 Pushing to the emulator is very slow. Using couchapp -v or watching logcat can help. You also may be able to push to a device instead of the emulator.
 
@@ -180,7 +200,8 @@ Deploy.
 Anything else?
 ----------------
 
-Look at index.html - many of the coconut-related .js files have been minimised and consolidated into app/coconut_formy.js. 
+* Look at index.html - many of the coconut-related .js files have been minimised and consolidated into app/coconut_formy.js.
+* Check out the ICTedge.org page on [Coconut](http://ictedge.org/coconut) for information about other Coconut-based projects.
     
 Examples
 --------
@@ -189,4 +210,4 @@ See SAMPLE.md for an example of how to add a new page to the app.
 
 Help!
 ----
-Check out the project's [issues](https://github.com/vetula/coconut/issues). Please help me fix issues and add any problem that you come across.
+Check out the project's [issues](https://github.com/vetula/coconut/issues). Please help us fix issues and add any problems that you come across.
